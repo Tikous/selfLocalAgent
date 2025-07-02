@@ -16,7 +16,7 @@
 - **前端**: Next.js 14 + React + TypeScript + Tailwind CSS
 - **后端**: Next.js API Routes
 - **向量数据库**: ChromaDB
-- **AI模型**: OpenAI GPT-3.5/4 + text-embedding-ada-002
+- **AI模型**: DeepSeek Chat + text-embedding-ada-002
 - **文档处理**: Mammoth (Word), PDF-Parse (PDF)
 - **容器化**: Docker Compose
 
@@ -42,8 +42,8 @@ npm run setup
 编辑 `.env.local` 文件，设置必要的环境变量：
 
 ```env
-# OpenAI API配置
-OPENAI_API_KEY=your_openai_api_key_here
+# DeepSeek API配置
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
 
 # ChromaDB配置
 CHROMA_HOST=localhost
@@ -147,7 +147,7 @@ slefAgent/
 ### 3. 系统监控
 
 - 查看ChromaDB连接状态
-- 监控OpenAI API状态
+- 监控DeepSeek API状态
 - 查看已索引的文档数量
 
 ## 🔍 支持的文件格式
@@ -204,7 +204,7 @@ npm run lint
 
 | 变量名 | 描述 | 默认值 |
 |--------|------|--------|
-| `OPENAI_API_KEY` | OpenAI API密钥 | 必填 |
+| `DEEPSEEK_API_KEY` | DeepSeek API密钥 | 必填 |
 | `CHROMA_HOST` | ChromaDB主机地址 | localhost |
 | `CHROMA_PORT` | ChromaDB端口 | 8000 |
 | `CHROMA_COLLECTION_NAME` | ChromaDB集合名称 | onenote_documents |
@@ -233,7 +233,7 @@ MIT License
    netstat -an | grep 8000
    ```
 
-### OpenAI API错误
+### DeepSeek API错误
 
 1. 检查API密钥是否正确设置
 2. 确认账户有足够的余额

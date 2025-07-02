@@ -26,7 +26,7 @@ const envPath = './.env.local'
 if (fs.existsSync(envExamplePath) && !fs.existsSync(envPath)) {
   fs.copyFileSync(envExamplePath, envPath)
   console.log('✅ 创建环境变量文件: .env.local')
-  console.log('⚠️  请编辑 .env.local 文件，设置您的 OPENAI_API_KEY')
+  console.log('⚠️  请编辑 .env.local 文件，设置您的 DEEPSEEK_API_KEY')
 } else if (fs.existsSync(envPath)) {
   console.log('📝 环境变量文件已存在: .env.local')
 } else {
@@ -66,7 +66,7 @@ const sampleContent = `# 欢迎使用OneNote RAG Agent
 
 - **前端**: Next.js + React + TypeScript
 - **向量数据库**: ChromaDB
-- **AI模型**: OpenAI GPT-3.5/4
+- **AI模型**: DeepSeek Chat
 - **文档处理**: Mammoth (Word), PDF-Parse (PDF)
 
 祝您使用愉快！
@@ -89,7 +89,7 @@ if (fs.existsSync('./docker-compose.yml')) {
 
 console.log('\n🎉 项目设置完成！')
 console.log('\n📋 接下来的步骤:')
-console.log('1. 编辑 .env.local 文件，设置您的 OPENAI_API_KEY')
+console.log('1. 编辑 .env.local 文件，设置您的 DEEPSEEK_API_KEY')
 console.log('2. 运行 "docker-compose up -d" 启动ChromaDB服务')
 console.log('3. 运行 "npm install" 安装依赖')
 console.log('4. 运行 "npm run dev" 启动开发服务器')

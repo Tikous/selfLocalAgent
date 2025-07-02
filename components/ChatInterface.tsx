@@ -225,7 +225,7 @@ export default function ChatInterface() {
                 ) : (
                   <AlertCircle className="w-4 h-4 text-red-500" />
                 )}
-                <span>OpenAI</span>
+                <span>DeepSeek</span>
               </div>
               <div className="text-gray-600">
                 文档: {systemStatus.stats?.totalChunks || 0} 块

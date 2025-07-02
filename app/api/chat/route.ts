@@ -45,9 +45,9 @@ export async function POST(request: NextRequest) {
           { status: 503 }
         )
       }
-      if (error.message.includes('OpenAI')) {
+      if (error.message.includes('OpenAI') || error.message.includes('DeepSeek')) {
         return NextResponse.json(
-          { error: 'OpenAI API服务不可用，请检查API密钥配置' },
+          { error: 'DeepSeek API服务不可用，请检查API密钥配置' },
           { status: 503 }
         )
       }
