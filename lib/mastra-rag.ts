@@ -33,8 +33,7 @@ export class MastraRAGSystem {
     this.chromaService = new ChromaService()
     this.oneNoteService = new LocalOneNoteService()
     this.openai = new OpenAI({
-      apiKey: process.env.DEEPSEEK_API_KEY || '',
-      baseURL: 'https://api.deepseek.com'
+      apiKey: process.env.OPENAI_API_KEY || ''
     })
   }
 
@@ -139,9 +138,9 @@ ${question}
 
 请提供详细且有用的回答，并在可能的情况下引用具体的笔记内容。`
 
-      // 4. 调用DeepSeek生成回答
+      // 4. 调用OpenAI生成回答
       const completion = await this.openai.chat.completions.create({
-        model: 'deepseek-chat',
+        model: 'gpt-3.5-turbo',
         messages: [
           {
             role: 'system',
@@ -278,12 +277,12 @@ ${question}
       // 检查ChromaDB
       health.chroma = await this.chromaService.healthCheck()
 
-      // 检查DeepSeek
+      // 检查OpenAI
       try {
         await this.openai.models.list()
         health.openai = true
       } catch (error) {
-        console.error('DeepSeek连接失败:', error)
+        console.error('OpenAI连接失败:', error)
       }
 
       // 检查文件系统

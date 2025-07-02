@@ -75,7 +75,7 @@ slefAgent/
 code .env.local
 
 # 必需配置
-DEEPSEEK_API_KEY=sk-your-deepseek-api-key-here
+OPENAI_API_KEY=sk-your-openai-api-key-here
 
 # 可选配置（已有默认值）
 CHROMA_HOST=localhost
@@ -85,8 +85,8 @@ ONENOTE_FILES_PATH=./data/onenote
 SUPPORTED_EXTENSIONS=.docx,.pdf,.txt,.html,.md
 ```
 
-#### 获取DeepSeek API密钥
-1. 访问 [DeepSeek平台](https://platform.deepseek.com/)
+#### 获取OpenAI API密钥
+1. 访问 [OpenAI平台](https://platform.openai.com/)
 2. 注册/登录账户
 3. 导航到 API Keys 页面
 4. 创建新的API密钥
@@ -173,11 +173,11 @@ ONENOTE_FILES_PATH=/path/to/your/documents
 
 ### AI模型配置
 
-#### 使用不同的DeepSeek模型
+#### 使用不同的OpenAI模型
 编辑 `lib/mastra-rag.ts`：
 ```typescript
 const completion = await this.openai.chat.completions.create({
-  model: 'deepseek-chat',  // 或 'deepseek-coder'
+  model: 'gpt-4',  // 或 'gpt-3.5-turbo-16k'
   // ...
 })
 ```
@@ -185,7 +185,7 @@ const completion = await this.openai.chat.completions.create({
 #### 调整响应参数
 ```typescript
 const completion = await this.openai.chat.completions.create({
-  model: 'deepseek-chat',
+  model: 'gpt-3.5-turbo',
   max_tokens: 1500,      // 增加最大令牌数
   temperature: 0.5,      // 降低随机性
   top_p: 0.9,           // 调整核采样

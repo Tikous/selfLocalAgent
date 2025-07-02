@@ -6,7 +6,7 @@
 
 - Node.js 18+ 
 - Docker 和 Docker Compose
-- DeepSeek API 密钥
+- OpenAI API 密钥
 
 ## ⚡ 快速启动（5步）
 
@@ -21,7 +21,7 @@ cd slefAgent
 npm run setup
 ```
 
-### 2️⃣ 配置DeepSeek API密钥
+### 2️⃣ 配置OpenAI API密钥
 
 编辑 `.env.local` 文件：
 
@@ -29,8 +29,8 @@ npm run setup
 # 打开环境变量文件
 code .env.local  # 或使用其他编辑器
 
-# 设置您的DeepSeek API密钥
-DEEPSEEK_API_KEY=sk-your-actual-deepseek-api-key-here
+# 设置您的OpenAI API密钥
+OPENAI_API_KEY=sk-your-actual-openai-api-key-here
 ```
 
 ### 3️⃣ 启动ChromaDB
@@ -105,7 +105,7 @@ docker-compose restart
 docker-compose logs chroma
 ```
 
-### Q: DeepSeek API错误怎么解决？
+### Q: OpenAI API错误怎么解决？
 
 1. 确认API密钥正确设置
 2. 检查账户余额

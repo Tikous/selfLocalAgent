@@ -74,14 +74,14 @@ export class ChromaService {
         path: `http://${chromaHost}:${chromaPort}`
       })
 
-      // 确保DeepSeek API密钥存在
-      const deepseekKey = process.env.DEEPSEEK_API_KEY
-      if (!deepseekKey || deepseekKey === 'your_deepseek_api_key_here') {
-        throw new Error('DEEPSEEK_API_KEY未设置或使用默认值')
+      // 确保OpenAI API密钥存在
+      const openaiKey = process.env.OPENAI_API_KEY
+      if (!openaiKey || openaiKey === 'your_openai_api_key_here') {
+        throw new Error('OPENAI_API_KEY未设置或使用默认值')
       }
 
       this.embeddingFunction = new EmbedFunc({
-        openai_api_key: deepseekKey,
+        openai_api_key: openaiKey,
         openai_model: 'text-embedding-ada-002'
       })
 
