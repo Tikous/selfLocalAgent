@@ -142,8 +142,14 @@ export class LocalOneNoteService {
   }
 
   private generateFileId(filePath: string): string {
-    // 使用文件路径生成唯一ID
-    return Buffer.from(filePath).toString('base64').replace(/[^a-zA-Z0-9]/g, '').substring(0, 16)
+    // 使用文件路径生成唯一ID（使用哈希而不是简单截取）
+    let hash = 0
+    for (let i = 0; i < filePath.length; i++) {
+      const char = filePath.charCodeAt(i)
+      hash = ((hash << 5) - hash) + char
+      hash = hash & hash // 转换为32位整数
+    }
+    return 'file_' + Math.abs(hash).toString(36)
   }
 
   async watchForChanges(callback: (notes: LocalOneNoteNote[]) => void): Promise<void> {

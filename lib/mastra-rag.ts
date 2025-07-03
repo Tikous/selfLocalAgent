@@ -1,6 +1,7 @@
 import { ChromaService, OneNoteNote } from './chroma-client'
 import { LocalOneNoteService, LocalOneNoteNote } from './local-onenote'
 import { OpenAI } from 'openai'
+import { HttpsProxyAgent } from 'https-proxy-agent'
 
 export interface RAGResponse {
   answer: string
@@ -32,8 +33,20 @@ export class MastraRAGSystem {
   constructor() {
     this.chromaService = new ChromaService()
     this.oneNoteService = new LocalOneNoteService()
+    
+    // 配置代理设置
+    const proxyConfig: any = {}
+    if (process.env.HTTP_PROXY || process.env.HTTPS_PROXY) {
+      const proxyUrl = process.env.HTTPS_PROXY || process.env.HTTP_PROXY
+      if (proxyUrl) {
+        console.log('🔧 使用代理配置:', proxyUrl)
+        proxyConfig.httpAgent = new HttpsProxyAgent(proxyUrl)
+      }
+    }
+    
     this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY || ''
+      apiKey: process.env.OPENAI_API_KEY || '',
+      ...proxyConfig
     })
   }
 

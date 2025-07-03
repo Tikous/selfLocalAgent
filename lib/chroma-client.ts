@@ -1,4 +1,5 @@
 // 仅在服务端使用的ChromaDB客户端包装器
+import { LocalChromaEmbeddingFunction } from './local-chroma-embedding'
 
 export interface DocumentChunk {
   id: string
@@ -74,15 +75,10 @@ export class ChromaService {
         path: `http://${chromaHost}:${chromaPort}`
       })
 
-      // 确保OpenAI API密钥存在
-      const openaiKey = process.env.OPENAI_API_KEY
-      if (!openaiKey || openaiKey === 'your_openai_api_key_here') {
-        throw new Error('OPENAI_API_KEY未设置或使用默认值')
-      }
-
-      this.embeddingFunction = new EmbedFunc({
-        openai_api_key: openaiKey,
-        openai_model: 'text-embedding-ada-002'
+      // 使用本地嵌入函数避免网络连接问题
+      console.log('🔧 使用本地嵌入函数，避免OpenAI API网络连接问题')
+      this.embeddingFunction = new LocalChromaEmbeddingFunction({
+        model: 'local-text-embedding'
       })
 
       // 尝试获取现有集合
