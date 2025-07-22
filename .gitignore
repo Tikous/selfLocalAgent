@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.yarn/install-state.gz
 
 # testing
 /coverage
@@ -34,11 +35,41 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# AWS SAM
+# ChromaDB数据文件（大文件）
+/chroma/
+*.bin
+*.sqlite3
+
+# AWS SAM构建文件
 .aws-sam/
 samconfig.toml
 
-# 敏感配置文件
-deploy-params.json
-.env.production
-lambda-env.json 
+# Lambda构建文件
+.lambda-build/
+
+# 示例数据文件
+/data/onenote/*.txt
+/data/onenote/*.md
+/data/onenote/*.docx
+/data/onenote/*.pdf
+
+# 保留示例文件
+!/data/onenote/示例笔记.txt
+
+# Python虚拟环境
+/venv/
+__pycache__/
+*.pyc
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.temp 
